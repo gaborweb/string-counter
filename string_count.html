@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRING counting</title>
+</head>
+
+<body>
+    <h5>"Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum dolor sit amet. Ipsum Libero voluptate laborum neque? Ratione, ipsum dolor sit amet mollitia?"</h5>
+    <script>
+        var sztring =
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem, ipsum dolor sit amet. Ipsum Libero voluptate laborum neque? Ratione, ipsum dolor sit amet mollitia?";
+
+        wordCount(sztring);
+
+        function wordCount(sztring) {
+            stringArray = sztring.split(" ");
+            var objArray = [];
+            var obj = {
+                word: stringArray[0],
+                number: 1
+            };
+            objArray.push(obj);
+
+            for (var i = 1; i < stringArray.length; i++) {
+                var wordIndex = 0;
+                wordIndex = objArray.findIndex(element => element.word === stringArray[i]);
+                if (wordIndex !== -1) {
+                    for (var j = 0; j < objArray.length; j++) {
+                        if (objArray[j].word === stringArray[i]) {
+                            objArray[j].number++;
+                        }
+                    }
+                } else {
+                    var objIndex = {
+                        word: stringArray[i],
+                        number: 1
+                    }
+                    objArray.push(objIndex);
+                }
+            }
+
+            for (var i = 0; i < objArray.length; i++) {
+                document.write(objArray[i].word + " : " + objArray[i].number + " times " + "<br>");
+            }
+        }
+    </script>
+
+</body>
+
+</html>
